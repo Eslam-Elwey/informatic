@@ -1,12 +1,12 @@
-
+import { RouterProvider } from "react-router";
+import routes from "./routes";
 
 function App() {
-
   return (
     <>
-      <h1 className="text-brand-200">Hello World</h1>
+      <RouterProvider router={routes}></RouterProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
