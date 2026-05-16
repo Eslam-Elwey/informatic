@@ -7,6 +7,7 @@
   --color-brand-light: var(--brand-light);
   --color-brand-subtle: var(--brand-subtle);
   --color-brand-foreground: var(--brand-foreground);
+  --color-bg-ui : var(--bg-ui)
 
   /* ACCENT */
   --color-accent: var(--accent-default);
@@ -26,6 +27,7 @@
   --color-neutral-700: var(--neutral-700);
   --color-neutral-800: var(--neutral-800);
   --color-neutral-900: var(--neutral-900);
+  --color-bg-ui  : var(--bg-ui) ;
 
   /* TEXT */
   --color-text-heading: var(--text-heading);
@@ -181,6 +183,7 @@
   --neutral-700: hsl(180, 1%, 23%);
   --neutral-800: hsl(180, 1%, 14%);
   --neutral-900: hsl(180, 4%, 5%);
+  --bg-ui : #fff;
 
   /* TEXT */
   --text-heading: hsl(180, 1%, 14%);
@@ -352,6 +355,7 @@
   --neutral-700: hsl(180, 1%, 73%);
   --neutral-800: hsl(180, 1%, 84%);
   --neutral-900: hsl(180, 4%, 95%);
+  --bg-ui :#18212f;
 
   /* COMMON */
   --selection-background: hsl(184, 70%, 59%);
@@ -439,6 +443,10 @@
 
   .sidebar-link:hover .sidebar-icon {
     color: var(--color-brand);
+  }
+
+  button {
+    @apply cursor-pointer ;
   }
 
 }

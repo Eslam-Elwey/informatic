@@ -32,7 +32,7 @@ const links = [
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col lg:w-[20%] xl:w-[15%] md:w-1/4 w-[30%] min-h-screen border-r border-neutral-200 p-5 shrink-0">
+    <aside className="row-span-full col-[1/2] flex flex-col gap-[3.2rem]  border-r border-neutral-200 p-5 bg-bg-ui">
       <Logo />
 
       <ul className="flex flex-col gap-4 mt-8">
@@ -51,7 +51,7 @@ export default function Sidebar() {
               >
                 <Icon className="sidebar-icon" />
 
-                <span>{link.label}</span>
+                <span className="font-bold">{link.label}</span>
               </NavLink>
             </li>
           );
