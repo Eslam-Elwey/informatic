@@ -8,6 +8,9 @@ export const getUsers = async (): Promise<User[]> => {
     return users;
   } catch (err) {
     console.error(err);
-    return [];
+    if (err instanceof Error){
+        throw new Error(err.message, { cause: err });
+    } 
+    throw new Error('something went wrong in fetching users', { cause: err }) ;
   }
 };

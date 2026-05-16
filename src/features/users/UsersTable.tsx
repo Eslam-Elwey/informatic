@@ -5,9 +5,11 @@ import UserRow from "./UserRow";
 import { useUsers } from "./useUsers";
 
 export default function UsersTable() {
-  const { isPending, users } = useUsers();
+  const { isPending, users, error } = useUsers();
 
-  if(isPending) return (<Spinner />)
+  if (isPending) return <Spinner />;
+
+  if (error) return (<p className="text-error text-xl text-center">{error.message}</p>);
 
   return (
     <Table columns="1fr 1.4fr 1.8fr 1.2fr 1fr 1fr">

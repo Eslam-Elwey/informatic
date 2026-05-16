@@ -3,10 +3,11 @@ import { getUsers } from "../../services/apiUsers";
 import type { User } from "../../types/user.type";
 
 export function useUsers() {
-  const { isPending, data : users =[]  } = useQuery<User[]>({
+  const { isPending, data : users =[] , error  } = useQuery<User[]>({
     queryKey: ["users"],
     queryFn: getUsers,
+    retry : 1
   });
 
-  return { isPending, users };
+  return { isPending, users,error };
 }
