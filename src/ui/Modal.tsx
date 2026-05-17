@@ -33,8 +33,8 @@ const ModalContext = createContext<ModalContextType | null>(null);
 export default function Modal({ children }: { children: ReactNode }) {
   const [openName, setOpenName] = useState("");
 
-  const close = () => setOpenName("");
-  const open = (name: string) => setOpenName(name);
+  const close = () => setOpenName(()=>"");
+  const open = (name: string) => setOpenName(()=>name);
 
   return (
     <ModalContext.Provider value={{ openName, open, close }}>
