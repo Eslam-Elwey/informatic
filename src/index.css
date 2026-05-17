@@ -468,6 +468,23 @@
     color: var(--color-brand);
   }
 
+  .toggle-btn {
+    @apply bg-transparent
+            border-none
+            p-2
+            rounded-sm
+            translate-x-[0.8rem]
+            transition-all
+            duration-200
+            hover:bg-neutral-100;
+  }
+
+  .icon {
+    @apply w-6
+          h-6
+          text-neutral-700;
+  }
+
   button {
     @apply cursor-pointer;
   }

@@ -5,6 +5,7 @@ import Users from "./pages/Users";
 import Todos from "./pages/Todos";
 import Posts from "./pages/Posts";
 import Comments from "./pages/Comments";
+import UserInfo from "./features/users/UserInfo";
 
 const routes = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const routes = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="/users" replace /> },
       { path: "/users", element: <Users /> },
+      { path: "/users/:userId", element: <UserInfo /> },
       { path: "/todos", element: <Todos /> },
       { path: "/posts", element: <Posts /> },
       { path: "/comments", element: <Comments /> },

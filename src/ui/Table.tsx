@@ -18,7 +18,7 @@ export default function Table({
     <TableContext.Provider value={{ columns }}>
       <div
         role="table"
-        className="border-2 border-table-border text-2xl overflow-x-auto rounded-sm"
+        className="border-2 border-table-border text-2xl overflow-x-auto rounded-sm min-w-350"
       >
         {children}
       </div>
