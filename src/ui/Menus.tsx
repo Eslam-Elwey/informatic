@@ -95,14 +95,14 @@ function Button({
 }: {
   children: React.ReactNode;
   icon: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }) {
   const context = useContext(MenusContext);
   if (!context) throw new Error("Menus.Button is used of its provider");
   const { close } = context;
 
   function handleClick() {
-    onClick();
+    onClick?.();
     close();
   }
 

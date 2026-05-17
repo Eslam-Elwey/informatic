@@ -9,9 +9,14 @@ import {
   MessageSquare,
   Trash2,
 } from "lucide-react";
+import Modal from "../../ui/Modal";
+import { useDeleteUser } from "./useDeleteUser";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 export default function UserRow({ user }: { user: User }) {
   const navigate = useNavigate();
+
+  const { isPending, deleteUser } = useDeleteUser();
 
   return (
     <Table.Row>
@@ -60,46 +65,54 @@ export default function UserRow({ user }: { user: User }) {
         {user.company.name}
       </p>
 
-      <Menus.Menu>
-        <Menus.Toggle id={String(user.id)} />
+      <Modal>
+        <Menus.Menu>
+          <Menus.Toggle id={String(user.id)} />
 
-        <Menus.List id={String(user.id)}>
-          <Menus.Button
-            icon={<Eye className="w-4 h-4 text-neutral-400" />}
-            onClick={() => navigate(`/users/${user.id}`)}
-          >
-            Show more info
-          </Menus.Button>
+          <Menus.List id={String(user.id)}>
+            <Menus.Button
+              icon={<Eye className="w-4 h-4 text-neutral-400" />}
+              onClick={() => navigate(`/users/${user.id}`)}
+            >
+              Show more info
+            </Menus.Button>
 
-          <Menus.Button
-            icon={<ClipboardList className="w-4 h-4 text-neutral-400" />}
-            onClick={() => navigate(`/users/${user.id}/todos`)}
-          >
-            Show todos
-          </Menus.Button>
+            <Menus.Button
+              icon={<ClipboardList className="w-4 h-4 text-neutral-400" />}
+              onClick={() => navigate(`/users/${user.id}/todos`)}
+            >
+              Show todos
+            </Menus.Button>
 
-          <Menus.Button
-            icon={<FileText className="w-4 h-4 text-neutral-400" />}
-            onClick={() => navigate(`/users/${user.id}/posts`)}
-          >
-            Show posts
-          </Menus.Button>
+            <Menus.Button
+              icon={<FileText className="w-4 h-4 text-neutral-400" />}
+              onClick={() => navigate(`/users/${user.id}/posts`)}
+            >
+              Show posts
+            </Menus.Button>
 
-          <Menus.Button
-            icon={<MessageSquare className="w-4 h-4 text-neutral-400" />}
-            onClick={() => navigate(`/users/${user.id}/comments`)}
-          >
-            Show comments
-          </Menus.Button>
+            <Menus.Button
+              icon={<MessageSquare className="w-4 h-4 text-neutral-400" />}
+              onClick={() => navigate(`/users/${user.id}/comments`)}
+            >
+              Show comments
+            </Menus.Button>
 
-          <Menus.Button
-            icon={<Trash2 className="w-4 h-4 text-error" />}
-            onClick={() => console.log("delete user", user.id)}
-          >
-            Delete
-          </Menus.Button>
-        </Menus.List>
-      </Menus.Menu>
+            <Modal.Open opens="delete">
+              <Menus.Button icon={<Trash2 className="w-4 h-4 text-error" />}>
+                Delete
+              </Menus.Button>
+            </Modal.Open>
+          </Menus.List>
+        </Menus.Menu>
+        <Modal.Window name="delete">
+          <ConfirmDelete
+            resourceName={`user with id :${user.id}`}
+            onConfirm={() => deleteUser(String(user.id))}
+            disabled={isPending}
+          />
+        </Modal.Window>
+      </Modal>
     </Table.Row>
   );
 }
