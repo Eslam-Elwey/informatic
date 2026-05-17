@@ -1,4 +1,3 @@
-
 import type { User } from "../../types/user.type";
 import Menus from "../../ui/Menus";
 import Spinner from "../../ui/Spinner";
@@ -12,9 +11,34 @@ export default function UsersTable() {
 
   const [searchParams] = useSearchParams();
 
+  const searchVal = searchParams.get("search") ?? "";
 
-  const searchVal = searchParams.get("search") ?? '' ;
-  const renderedUsers = users.filter((user)=>user.name.toLowerCase().includes(searchVal.toLowerCase()))
+  const sortBy = searchParams.get("sortBy") ?? "";
+  const renderedUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchVal.toLowerCase()),
+  );
+
+  switch (sortBy) {
+    case "name-asc":
+      renderedUsers.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+
+    case "name-desc":
+      renderedUsers.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+
+    case "company-asc":
+      renderedUsers.sort((a, b) =>
+        a.company.name.localeCompare(b.company.name),
+      );
+      break;
+
+    case "company-desc":
+      renderedUsers.sort((a, b) =>
+        b.company.name.localeCompare(a.company.name),
+      );
+      break;
+  }
 
   if (isPending) return <Spinner />;
 
