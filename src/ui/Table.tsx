@@ -18,7 +18,13 @@ export default function Table({
     <TableContext.Provider value={{ columns }}>
       <div
         role="table"
-        className="border-2 border-table-border text-2xl overflow-x-auto rounded-sm min-w-350"
+        className="overflow-x-auto
+    rounded-2xl
+    border
+    border-table-border
+    bg-bg-surface
+    shadow-sm
+    min-w-237.5"
       >
         {children}
       </div>
@@ -38,12 +44,20 @@ function Head({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className="grid gap-x-11 justify-items-center items-center transition-none  px-6 py-4
-                    bg-bg-surface
-                    border-b border-border-subtle
-                    uppercase
-                    tracking-[0.4px]
-                    font-semibold
+      className="grid
+  items-center
+  justify-items-center
+  gap-x-6
+  border-b
+  border-border-subtle
+  bg-bg-elevated
+  px-6
+  py-5
+  text-sm
+  font-bold
+  uppercase
+  tracking-wider
+  text-text-muted
                      "
       role="rowheader"
       style={{ gridTemplateColumns: columns }}
@@ -84,6 +98,27 @@ function Row({ children }: { children: React.ReactNode }) {
   );
 }
 
+function Footer({ children }: { children?: React.ReactNode }) {
+  if (!children) return null;
+  return (
+    <div
+      className="flex
+        items-center
+        justify-center
+        border-t
+        border-border-subtle
+        bg-bg-elevated
+        px-5
+        py-4
+        text-sm
+        text-text-muted"
+    >
+      {children}
+    </div>
+  );
+}
+
+Table.Head = Head;
 Table.Body = Body;
 Table.Row = Row;
-Table.Head = Head;
+Table.Footer = Footer;

@@ -15,6 +15,7 @@ const routes = createBrowserRouter([
       { index: true, element: <Navigate to="/users" replace /> },
       { path: "/users", element: <Users /> },
       { path: "/users/:userId", element: <UserInfo /> },
+      { path: "/users/:userId/todos", element: <Todos /> },
       { path: "/todos", element: <Todos /> },
       { path: "/posts", element: <Posts /> },
       { path: "/comments", element: <Comments /> },
