@@ -53,7 +53,7 @@ export function useTodos() {
     pageCount = data?.count ?? 0;
   } else {
     pageCount = Math.ceil(
-      data?.todos?.length / +import.meta.env.VITE_MAX_TABLE_ROWS,
+      (data?.todos?.length) ?? 0 / +import.meta.env.VITE_MAX_TABLE_ROWS,
     );
   }
 
