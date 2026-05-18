@@ -21,7 +21,7 @@ export default function UserRow({ user }: { user: User }) {
   return (
     <Table.Row>
       <div className="flex items-center min-w-0 flex-col">
-        <p className="font-semibold text-text-heading truncate text-xl">
+        <p className="font-semibold text-text-heading truncate text-sm md:text-xl">
           {user.name}
         </p>
         <span className="text-sm text-text-muted truncate">
@@ -31,7 +31,7 @@ export default function UserRow({ user }: { user: User }) {
 
       <div className="min-w-0">
         <a
-          className="text-xl text-text-body truncate"
+          className="text-sm md:text-xl text-text-body truncate"
           href={`mailto:${user.email}`}
         >
           {user.email}
@@ -43,7 +43,7 @@ export default function UserRow({ user }: { user: User }) {
             inline-flex items-center
             rounded-full
             px-3 py-1
-            text-lg font-medium
+            text-sm md:text-lg font-medium
             text-brand
           "
       >
@@ -54,14 +54,14 @@ export default function UserRow({ user }: { user: User }) {
         className="
             inline-flex items-center
             px-3 py-1
-            text-lg font-medium
+            text-sm md:text-lg font-medium
             text-accent
           "
       >
         {user.address.city}
       </p>
 
-      <p className="font-medium text-lg text-text-heading truncate">
+      <p className="font-medium text-sm md:text-lg text-text-heading truncate">
         {user.company.name}
       </p>
 
